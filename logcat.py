@@ -10,6 +10,7 @@ DEFAULT_ROTATE_SIZE = 256
 DEFAULT_FORMAT = 'threadtime'
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--device', help="Device serial number to run logcat on.")
 parser.add_argument('-b', '--buffer', default=DEFAULT_BUFFER, help="Loads an alternate log buffer for viewing, such as events or radio. The main buffer is used by default.")
 parser.add_argument('-c', '--clear', action='store_true', help="Clears (flushes) the entire log and exits.")
 parser.add_argument('-d', '--dump', action='store_true', help="Dumps the log to the screen and exits.")
@@ -99,7 +100,10 @@ def should_print(line):
 
   return True
 
-cmd = ['adb', 'logcat', '-v', args.format, '-b', args.buffer]
+cmd = ['adb']
+if args.device is not None :
+  cmd += ['-s', args.device]
+cmd += ['logcat', '-v', args.format, '-b', args.buffer]
 if args.dump:
   cmd += ['-d']
 
