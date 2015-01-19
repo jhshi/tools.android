@@ -5,8 +5,8 @@ import subprocess
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('exe', choices=['adb', 'fastboot'], help='Executable to use.')
-parser.add_argument('args', nargs='*', help='Arguments for adb or fastboot.')
+parser.add_argument('exe', help='Executable to use. Must support devices and -s option to list and specify device.')
+parser.add_argument('args', nargs=argparse.REMAINDER, help='Arguments.')
 
 args = parser.parse_args()
 
