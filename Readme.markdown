@@ -1,14 +1,17 @@
+Various Android tools.
+
+## Installation
+Download the python file, make it executable, and place it somewhere in
+your `$PATH`.
+
+
+# logcat.py
+
 In a nutshell, this is an Android `logcat` wrapper that supports regular
 expression tag filtering. Please see [my blog][blog] about how I come up with
 this tool.
 
-
-## Installation
-Download the `logcat.py` file, make it executable, and place it somewhere in
-your `$PATH`.
-
-
-## Usage
+### Usage
 ```
 usage: logcat.py [-h] [--device DEVICE] [-b BUFFER] [-c] [-d] [-g] [-s]
                  [-v FORMAT]
@@ -31,8 +34,25 @@ optional arguments:
                         Sets the output format for log messages. The default
                         is brief format.
 ```
-The options are intentionally similar to the `logcat` tool. Please refer to
+The options are made intentionally similar to the `logcat` tool. Please refer to
 [the document][logcat] for further details.
+
+
+# foreach.py
+
+Execute command for each connected Android devices. Support `adb` and
+`fastboot`. Internally, it uses the `-s` option to specify which device to use.
+
+```
+usage: foreach.py [-h] {adb,fastboot} [args [args ...]]
+
+positional arguments:
+  {adb,fastboot}
+  args
+
+optional arguments:
+  -h, --help      show this help message and exit.
+```
 
 [logcat]: http://developer.android.com/tools/debugging/debugging-log.html
 [blog]: http://jhshi.me/2014/10/03/regular-expression-support-in-android-logcat-tag-filters/
