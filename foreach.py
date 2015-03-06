@@ -17,7 +17,7 @@ for line in subprocess.check_output('%s devices' % (args.exe), shell=True).split
     devices.append(line.split()[0])
 
 print '============================================'
-print 'Devices detected: \n%s' % ('\n'.join(devices))
+print '%d devices detected: \n%s' % (len(devices), '\n'.join(devices))
 print '============================================'
 
 for d in devices:
